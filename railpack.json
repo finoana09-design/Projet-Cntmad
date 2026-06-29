@@ -1,3 +1,9 @@
 {
-  "php": "8.2"
+  "$schema": "https://schema.railpack.com",
+  "packages": {
+    "php": "8.2"
+  },
+  "deploy": {
+    "startCommand": "php -S 0.0.0.0:$PORT -t public"
+  }
 }
