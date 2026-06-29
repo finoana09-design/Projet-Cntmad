@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<meta charset="UTF-8"/>
+
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+
+
+	</header>
+
+	<body class="bg-dark tex-ligth">
+		<div class="position-relative">
+
+			{% if not app.user %}
+
+				{% else %}
+
+					<nav class="navbar navbar-expand navbar-dark bg-secondary">
+						<div class="container-fluid">
+							<a href="{{ path('home')}}"><img src="{{ asset('build/images/cntmad.png') }}" width="200" height="60"></a>
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+
+							<div class="collapse navbar-collapse" id="navbarColor01">
+								<ul class="navbar-nav me-auto">
+
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('class')}}">Classes management</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('matiere_liste')}}">Matter management</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('about')}}">About</a>
+									</li>
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Student</a>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" href="{{ path('student_add') }}">Add Student</a>
+											<a class="dropdown-item" href="{{ path('student_list') }}">Student List</a>
+											<a class="dropdown-item" href="#">Something else here</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="#">Separated link</a>
+										</div>
+									</li>
+									{% if is_granted('ROLE_ADMIN') %}
+
+
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administrator</a>
+											<div class="dropdown-menu bg-dark text-white">
+												<a class="dropdown-item text-white btn-secondary" href="{{ path('app_register')}}">Add user</a>
+												<a class="dropdown-item text-white btn-secondary" href="#">User list</a>
+											</div>
+										</li>
+									{% endif %}
+
+								</ul>
+								<form class="d-flex">
+									<input class="form-control me-sm-2" type="text" placeholder="Search">
+									<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+
+									<a href=" {{ path('app_logout') }} ">
+										<img src="{{ asset('build/images/deconecter.png') }}" width="60" height="40">
+									</a>
+								</form>
+
+							</div>
+						</div>
+					</nav>
+
+
+			{% endif %}
+		</div>
+		<div class="container text-white"> {% block body %}{% endblock %}
+			</div>
+
+		</body>
+
+		<footer>
+			{% if not app.user %}
+				{% else %}
+					<div class="fixed-bottom text-center  align-items-center justify-content-center bg-secondary">
+
+						<h6>Copyright Finoana ANDRIANJAKA</h6>
+						<h7>Symfony Project 2021</h7>
+
+					</div>
+			{% endif %}
+		</footer>
+	</html>

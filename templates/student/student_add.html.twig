@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+	{{ form_start(formStudent) }}
+
+	<div class="form-group">
+		<label class="form-label mt-4"></label>
+		{{ form_row(formStudent.name , {'attr' :{'class' : 'form-control' , 'placeholder' : 'Enter name....'}}) }}
+	</div>
+
+	<div class="form-group">
+		<label class="form-label mt-4"></label>
+		{{ form_row(formStudent.firstname , {'attr' :{'class' : 'form-control' , 'placeholder' : 'Enter firstname....'}}) }}
+	</div>
+
+	<div class="form-group">
+		<label class="form-label mt-4"></label>
+		{{ form_row(formStudent.matricule , {'attr' :{'class' : 'form-control' , 'placeholder' : 'Enter matricule....'}}) }}
+	</div>
+
+	<div class="form-group">
+		<label class="form-label mt-4"></label>
+		{{ form_row(formStudent.niveau , {'attr' :{'class' : 'form-control' , 'placeholder' : 'Enter niveau....'}}) }}
+	</div>
+
+
+	<div class="form-group">
+		<label class="form-label mt-4"></label>
+		{{ form_row(formStudent.adresse , {'attr' :{'class' : 'form-control' , 'placeholder' : 'Enter adresse....'}}) }}
+	</div>
+
+	<div class="form-group">
+		<label class="form-label mt-4"></label>
+		{{ form_row(formStudent.genre , {'attr' :{'class' : 'form-control' , 'placeholder' : 'Enter genre....'}}) }}
+	</div>
+
+	<div class="form-group">
+		<label class="form-label mt-4"></label>
+		{{ form_row(formStudent.contact , {'attr' :{'class' : 'form-control' , 'placeholder' : 'Enter contact....'}}) }}
+	</div>
+
+
+	<hr class="my-4">
+	<div class="d-grid gap-2">
+		<button type="submit" class="btn btn-lg btn-success">Register</button>
+	</div>
+
+	{{ form_end(formStudent) }}
+{% endblock %}

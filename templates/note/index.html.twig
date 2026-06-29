@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+	<div class="text-center d-flex align-items-center justify-content-center ">
+		<div class="card  px-4 px-lg-5" style="width: 50rem;">
+			<H5>Students per class</H5>
+			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+				<button type="button" class="btn btn-secondary">Filiere</button>
+				<div class="btn-group" role="group">
+					<button id="btnGroupDrop1" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choisissez un filiere</button>
+					<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+						{% for filiere in filieres %}
+							<a class="dropdown-item" href="{{path('classP' , {'id_filiere' : filiere.id}) }}">{{filiere.Filiere}}</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<hr class="my-4">
+
+
+			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+				<button type="button" class="btn btn-secondary">Niveau</button>
+				<div class="btn-group" role="group">
+					<button id="btnGroupDrop1" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choisissez un niveau</button>
+					<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+						{% for niveau in niveaus %}
+							<a class="dropdown-item" href="{{path('classS' , {'id_niveau' : niveau.id}) }}">{{ niveau.Niveau }}</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<hr class="my-4 ">
+
+		</div>
+	</div>
+
+
+	<div class="text-center  align-items-center justify-content-center text-dark ">
+		<div class="card  px-4 px-lg-5" style="width: 80rem;">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">MATRICULE</th>
+						<th scope="col">NAME</th>
+						<th scope="col">FIRSTNAME</th>
+
+
+						<th scope="col">OPTION</th>
+
+					</tr>
+				</thead>
+
+				{% for student in students %}
+					<tbody>
+						<tr class="table-active">
+							<th scope="row"></th>
+							<td>{{student.matricule}}</td>
+							<td>{{student.name}}</td>
+							<td>{{student.firstname}}</td>
+
+							<td>
+								<a class="btn btn-success" href="{{path('noteShow' , {'id' : student.id}) }}" role="button">Bulettin</a>
+								<a class="btn btn-success" href="{{path('note_add' , {'id' : student.id}) }}" role="button">Ajouter/Modifier</a>
+							</td>
+
+						</tr>
+					</tbody>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+{% endblock %}

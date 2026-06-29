@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<form action="{{ path('injection') }}" method="post">
+
+		<div class="text-center  align-items-center justify-content-center text-dark ">
+
+
+			<div class="card mb-3">
+				<h5 class="card-header">Student Mark details</h5>
+
+
+				<div class="card-body">
+					<h3 class="card-title">{{ student.firstname }}</h3>
+					<h5 class="card-title">{{ student.name }}</h5>
+
+				</div>
+
+
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">{{ student.niveau.filiere.Filiere }}</li>
+					<li class="list-group-item">{{ student.niveau.niveau }}</li>
+
+					<li class="list-group-item">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Matiere</th>
+									<th scope="col">id</th>
+
+									<th scope="col">Examen Partielle</th>
+									<th scope="col">Examen Final</th>
+
+
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for matiere in matieres %}
+									<tr class="table-secondary">
+
+										<th scope="row">{{matiere.nameMatiere}}</th>
+										<td>{{matiere.id}}</td>
+										<td><input type="text" name="patielle" required></td>
+										<td><input type="text" name="final" required></td>
+
+									</tr>
+								{% endfor %}
+								<tr class="table-secondary">
+									<td colspan="5"><input type="submit" value="Valider"></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="card-body"></div>
+			<div class="card-footer text-muted">Copyrigth Finoana ANDRIANJAKA 2021</div>
+		</form>
+
+	{% endblock %}

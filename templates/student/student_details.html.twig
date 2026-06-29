@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<div class="text-center  align-items-center justify-content-center text-dark ">
+
+
+		<div class="card mb-3">
+			<h5 class="card-header">Student details</h5>
+
+			<img src="{{ asset('build/images/finoana.jpg') }}" class="d-block w-200" alt="image" class="d-block user-select-none" height="250" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveaspectratio="xMidYMid slice" viewbox="0 0 318 180" style="font-size:1.100rem;text-anchor:middle">
+			<div class="card-body">
+				<h3 class="card-title">{{ student.firstname }}</h3>
+				<h5 class="card-title">{{ student.name }}</h5>
+
+			</div>
+
+
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">{{ student.niveau.filiere.Filiere }}</li>
+				<li class="list-group-item">{{ student.niveau.niveau }}</li>
+				<li class="list-group-item">{{ student.adresse }}</li>
+				<li class="list-group-item">{{ student.contact }}</li>
+
+			</ul>
+			<div class="card-body">
+				<a class="btn btn-success btn-lg" href="{{ path('student_edit' , {'id' : student.id}) }}" role="button">Update</a>
+				<a class="btn btn-success btn-lg" href="#" role="button">Delete</a>
+			</div>
+			<div class="card-footer text-muted">
+				Copyrigth Finoana ANDRIANJAKA 2021
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

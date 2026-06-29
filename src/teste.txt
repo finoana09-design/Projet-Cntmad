@@ -1,0 +1,41 @@
+$matiere = new Matiere;
+        $matiere->getNameMatiere();
+        $id = $_GET['id_student'];
+        $students = $repoS->find($id);
+        $student = new Student;
+        $student = $students->getName();
+
+
+        $note = new Note;
+        $form = $this->createForm(NoteType::class, $note);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $note->setMatiere($matiere);
+            $student = $students->getName();
+            $note->setStudent($student);
+            $manager->getManager()->persist($note);
+            $manager->getManager()->flush();
+            return $this->redirectToRoute('noteShow');
+        }
+
+
+
+        'formNote' => $form->createView()
+
+        $matieres = $repoM->find($id_matiere);
+        $id = $_GET['id_student'];
+        $students = $repoS->find($id);
+
+        $note = new Note;
+        $form = $this->createForm(NoteType::class, $note);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $note->setMatiere($matiere);
+            $student = $students->getName();
+            $note->setStudent($student);
+            $manager->getManager()->persist($note);
+            $manager->getManager()->flush();
+            return $this->redirectToRoute('noteShow');
+        }
